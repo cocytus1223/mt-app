@@ -16,7 +16,7 @@
     "@nuxtjs/axios": "^5.0.0",
     "babel-preset-es2015": "^6.24.1",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.4.6",
+    "element-ui": "^2.4.11",
     "koa": "^2.5.2",
     "node-sass": "^4.11.0",
     "nuxt": "^2.0.0",
