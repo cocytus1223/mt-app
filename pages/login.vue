@@ -61,7 +61,7 @@ export default {
     login() {
       let self = this
       self.$axios
-        .post('http://127.0.0.1:3000/users/signin', {
+        .post('/users/signin', {
           username: window.encodeURIComponent(self.username),
           password: CryptoJS.MD5(self.password).toString()
         })
