@@ -75,12 +75,15 @@ export default {
     let {
       status,
       data: { count, pois }
-    } = await self.$axios.get('/search/resultsByKeywords', {
-      params: {
-        keyword: '景点',
-        city: self.$store.state.geo.position.city
+    } = await self.$axios.get(
+      'http://127.0.0.1:3000/search/resultsByKeywords',
+      {
+        params: {
+          keyword: '景点',
+          city: self.$store.state.geo.position.city
+        }
       }
-    })
+    )
     if (status === 200 && count > 0) {
       let r = pois.filter(item => item.photos.length).map(item => {
         return {
@@ -107,12 +110,15 @@ export default {
         let {
           status,
           data: { count, pois }
-        } = await self.$axios.get('/search/resultsByKeywords', {
-          params: {
-            keyword,
-            city: self.$store.state.geo.position.city
+        } = await self.$axios.get(
+          'http://127.0.0.1:3000/search/resultsByKeywords',
+          {
+            params: {
+              keyword,
+              city: self.$store.state.geo.position.city
+            }
           }
-        })
+        )
         if (status === 200 && count > 0) {
           let r = pois.filter(item => item.photos.length).map(item => {
             return {

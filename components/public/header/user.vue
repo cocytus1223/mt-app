@@ -7,10 +7,12 @@
     <template v-else>
       <nuxt-link
         to="/login"
-        class="login">立即登录</nuxt-link>
+        class="login"
+      >立即登录</nuxt-link>
       <nuxt-link
         to="/register"
-        class="register">注册</nuxt-link>
+        class="register"
+      >注册</nuxt-link>
     </template>
   </div>
 </template>
@@ -21,10 +23,18 @@ export default {
     return {
       user: ''
     }
+  },
+  async mounted() {
+    const {
+      status,
+      data: { user }
+    } = await this.$axios.get('http://127.0.0.1:3000/users/getUser')
+    if (status === 200) {
+      this.user = user
+    }
   }
 }
 </script>
 
 <style scoped lang="css">
-
 </style>
