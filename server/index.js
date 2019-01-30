@@ -5,12 +5,14 @@ const { Nuxt, Builder } = require('nuxt')
 import mongoose from 'mongoose'
 import bodyparser from 'koa-bodyparser'
 import session from 'koa-generic-session'
+import cors from 'koa2-cors'
 import Redis from 'koa-redis'
 import json from 'koa-json'
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
 import users from './interface/users'
 import geo from './interface/geo'
+import search from './interface/search'
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
@@ -31,6 +33,8 @@ app.use(
   })
 )
 app.use(json())
+
+app.use(cors())
 
 mongoose.connect(
   dbConfig.dbs,
@@ -57,6 +61,7 @@ async function start() {
 
   app.use(users.routes()).use(users.allowedMethods())
   app.use(geo.routes()).use(geo.allowedMethods())
+  app.use(search.routes()).use(search.allowedMethods())
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
 

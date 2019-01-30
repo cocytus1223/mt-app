@@ -48,7 +48,7 @@
 <script>
 import CryptoJS from 'crypto-js'
 export default {
-  data: () => {
+  data() {
     return {
       checked: '',
       username: '',
@@ -61,7 +61,7 @@ export default {
     login() {
       let self = this
       self.$axios
-        .post('/users/signin', {
+        .post('http://127.0.0.1:3000/users/signin', {
           username: window.encodeURIComponent(self.username),
           password: CryptoJS.MD5(self.password).toString()
         })
