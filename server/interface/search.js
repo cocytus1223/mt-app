@@ -7,7 +7,7 @@ let router = new Router({
   prefix: '/search'
 })
 
-const sign = ''
+const sign = '6ce8fc068b22ef6606e2eadc6c5a5ac1'
 
 router.get('/top', async ctx => {
   let {
